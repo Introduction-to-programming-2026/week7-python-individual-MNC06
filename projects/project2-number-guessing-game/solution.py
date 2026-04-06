@@ -3,14 +3,31 @@
 
 import random
 
-# TODO: generate a random secret number between 1 and 10
+print("Choose difficulty: (1) Easy 1-10  (2) Medium 1-50  (3) Hard 1-100")
+choice = input("Choice: ")
 
-# TODO: set up a guesses counter
+if choice == "1":
+    max_number = 10
+elif choice == "2":
+    max_number = 50
+elif choice == "3":
+    max_number = 100
+else:
+    max_number = 10
 
-# TODO: get the user's first guess
+secret = random.randint(1, max_number)
 
-# TODO: while loop — keep asking until the guess is correct
-#   - print "Too low!" or "Too high!" on each wrong guess
-#   - count each guess
+guesses = 0
+guess = int(input(f"Guess a number between 1 and {max_number}: "))
 
-# TODO: print the congratulations message with the number of guesses
+while guess != secret:
+    guesses += 1
+
+    if guess < secret:
+        guess = int(input("Too low! Try again: "))
+    else:
+        guess = int(input("Too high! Try again: "))
+
+guesses += 1
+
+print(f"Correct! You got it in {guesses} guesses.")
